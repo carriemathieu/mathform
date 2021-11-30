@@ -1,0 +1,6 @@
+<form [formGroup]="mathForm">
+    {{ a }} + {{ b }} =
+    <input formControlName="answer" />
+</form>
+
+{{ mathForm.errors | json }}
