@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, AbstractControl } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
+
+import { MathValidators } from '../math-validators';
+
 @Component({
   selector: 'app-equation',
   templateUrl: './equation.component.html',
@@ -13,11 +16,9 @@ export class EquationComponent implements OnInit {
     b: new FormControl(this.randomNumber()),
     answer: new FormControl('')
   }, [
-    (form: AbstractControl) => {
-      const { a, b, answer } = form.value;
-      return a + b === parseInt(answer) ? null : { addition: true }
-    }
+    MathValidators.addition('answer','a', 'b')
   ])
+
   constructor() { }
 
   // runs anytime we try to access a property on our class
