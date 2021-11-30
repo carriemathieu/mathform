@@ -1,6 +1,11 @@
-<form [formGroup]="mathForm">
-    {{ a }} + {{ b }} =
-    <input formControlName="answer" />
-</form>
+<div class="equation">
+    <form [formGroup]="mathForm">
+        {{ a }} + {{ b }} =
+        <input appAnswerHighlight formControlName="answer" />
+    </form>
+</div>
 
-{{ mathForm.errors | json }}
+<!-- show at least 1 digit to left of decimal, and up to 3 digits to right -->
+<div class="stats">
+    {{ secondsPerSolution | number: '1.1-3'}}
+</div>
